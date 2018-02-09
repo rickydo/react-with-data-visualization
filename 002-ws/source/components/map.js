@@ -15,7 +15,8 @@ export default class Map extends React.Component {
 				totalHeight = 180, // degrees
 				latSize = img.height/totalHeight,
 				lonSize = img.width/totalHorizontal,
-				lat, lon;
+				lat, lon,
+				r = 1; //range of 1 degree
 
 
 			// old school way of getting point without css3
@@ -31,7 +32,24 @@ export default class Map extends React.Component {
 
 			lat = (point.y - (img.height/2)) / -latSize; 	// flip direction to make positive into neg, vice versa
 			lon = (point.x - (img.width/2)) / lonSize;
-			console.log(lat, lon);			
+			console.log(lat, lon);
+
+			var ws = `http://api.geonames.org/citiesJSON?formatted=true&north=${lat+r}&south=${lat-r}&east=${lon+r}&west=${lon-r}&lang=en&username=geek&style=full`;
+
+			console.log(ws);
+
+			// web service GET request with native
+			var xhr = new XMLHttpRequest();
+					xhr.open('GET', ws);
+					xhr.onload = () => {
+						// 'this' of the onclick of map
+						if(xhr.status === 200) {
+							console.log(xhr.responseText);
+						}else{
+							// ERROR
+						}
+					};
+					xhr.send();
 	}
 
 	render() {
