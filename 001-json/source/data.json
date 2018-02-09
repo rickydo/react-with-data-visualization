@@ -1,10 +1,10 @@
 {
-	"name":"Ben",
-	"age":33,
-	"smart":false,
-	"friends":["Dan", "Sam", "Samanta"],
+	"name": "Ricky",
+	"age": 27,
+	"smart": false,
+	"friends":["John", "Jacob", "Jingle"],
 	"eyes": {
 		"left":"green",
-		"right":"brown"		
+		"right":"blue"		
 	}
 }
